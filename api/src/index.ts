@@ -1,17 +1,16 @@
 import express , {Router}  from 'express';
 import productsRouter from './routes/products/index';
+import { listProducts } from './routes/products/productsController';
 
 const port = 3000; // default port 3000
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get('/', listProducts)
 
 
 
 
-app.use('/', productsRouter)
+app.use('/products', productsRouter)
 
 
 app.listen(port, () => {
